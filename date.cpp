@@ -203,6 +203,24 @@ public:
         return Date(years, months, days + d);
     }
 
+
+    // Counting the total number of days.
+
+    int TotalDays() const
+    {
+        int totalDays = days;
+
+        for (int i = 1; i < months; ++i)
+        {
+            int daysInMonth, daysInPrevMonth;
+            countDaysInMonth(daysInMonth, daysInPrevMonth, i);
+
+            totalDays += daysInPrevMonth;
+        }
+
+        return totalDays;
+    }
+};
 };
 
 
