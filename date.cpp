@@ -281,5 +281,26 @@ std::istream& operator >> (std::istream& in, Date& date)
 
 int main()
 {
+    std::cout << "\n\n ----TEST 1----\n";
+    Date date(2021, 39, -28);
+    std::cout << date;
 
+    std::cout << "\n\n ----TEST 2----\n";
+    std::cin >> date;
+    std::cout << date;
+
+    std::cout << "\n\n ----TEST 3----\n";
+    std::cout << date + 53;
+
+    std::cout << "\n\n ----TEST 4----\n";
+    date += 4;
+    std::cout << date;
+
+    std::cout << "\n\n ----TEST 5----\n";
+    Date date1(3533);
+    Date date2(5456);
+
+    std::cout << date2 - date1;
+
+    return 0;
 }
