@@ -172,6 +172,37 @@ private:
             months += 12;
         }
     }
+
+public:
+    Date(int y, int m, int d) {};
+
+    int GetYear() const {};
+    int GetMonth() const {};
+    int GetDay() const {};
+
+    Date(int d) : Date(0, 0, d) {};
+
+
+    void AddDays(int d)
+    {
+        days += d;
+    }
+
+
+    // Overload operators '+' and '+=' : 
+
+    Date& operator += (int d)
+    {
+        days += d;
+
+        return *this;
+    }
+
+    Date operator+ (int d) const
+    {
+        return Date(years, months, days + d);
+    }
+
 };
 
 
