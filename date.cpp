@@ -255,6 +255,30 @@ int operator- (const Date& d1, const Date& d2)
 }
 
 
+// Overloading input and output operators.
+
+std::ostream& operator << (std::ostream& out, const Date& d)
+{
+    out << " Date : " << d.GetDay() << "/" << d.GetMonth() << "/" << d.GetYear() << "\n\n";
+    return out;
+}
+
+std::istream& operator >> (std::istream& in, Date& date)
+{
+    int y, m, d;
+    std::cout << " Year : ";
+    in >> y;
+    std::cout << " Month : ";
+    in >> m;
+    std::cout << " Day : ";
+    in >> d;
+
+    date = Date(y, m, d);
+
+    return in;
+}
+
+
 int main()
 {
 
