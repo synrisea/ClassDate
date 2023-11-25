@@ -127,9 +127,50 @@ private:
         return daysInMonth;
     }
 
+
     bool isLeapYear() const
     {
         return (years % 4 == 0 && years % 100 != 0) || (years % 400 == 0);
+    }
+
+
+    void Normalize()
+    {
+        int daysInMonth, daysInPrevMonth;
+
+        countDaysInMonth(daysInMonth, daysInPrevMonth, months);
+
+        // For days : 
+
+        months += days / (daysInMonth + 1);
+        days %= daysInMonth + 1;
+
+        if (days == 0)
+        {
+            days++;
+        }
+
+        if (days < 0)
+        {
+            months -= 1;
+            days += daysInPrevMonth + 1;
+        }
+
+        // For months :
+
+        years += months / 12;
+        months %= 12;
+
+        if (months == 0)
+        {
+            months++;
+        }
+
+        if (months < 0)
+        {
+            years -= 1;
+            months += 12;
+        }
     }
 };
 
