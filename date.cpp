@@ -221,7 +221,38 @@ public:
         return totalDays;
     }
 };
-};
+
+
+int Date::GetYear() const
+{
+    return years;
+}
+
+int Date::GetMonth() const
+{
+    return months;
+}
+
+int Date::GetDay() const
+{
+    return days;
+}
+
+
+Date::Date(int y, int m, int d)
+{
+    years = y;
+    months = m;
+    days = d;
+
+    Normalize();
+}
+
+
+int operator- (const Date& d1, const Date& d2)
+{
+    return d1.TotalDays() - d2.TotalDays();
+}
 
 
 int main()
