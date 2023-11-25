@@ -17,6 +17,21 @@ enum MonthOrder
     DECEMBER
 };
 
+struct WrongDayException
+{
+    int day;
+};
+
+struct WrongMonthException
+{
+    int month;
+};
+
+struct WrongYearException
+{
+    int year;
+};
+
 
 class Date
 {
@@ -174,13 +189,50 @@ private:
     }
 
 public:
-    Date(int y, int m, int d) {};
+
+    // Adding exceptions.
+
+    Date(int y, int m, int d) 
+    {
+        days = d;
+        years = y;
+        months = m;
+
+        int daysInMonth, daysInPrevMonth;
+
+        if (days > countDaysInMonth(daysInMonth, daysInPrevMonth, months) || days <= 0)
+        {
+            throw WrongDayException{ days };
+        }
+
+        if (months > 12 || months <= 0)
+        {
+            throw WrongMonthException{ months };
+        }
+
+        if (years <= 0)
+        {
+            throw WrongYearException{ years };
+        }
+    };
+
+
+    Date(int d) : Date(0, 0, d) 
+    {
+        days = d;
+
+        int daysInMonth, daysInPrevMonth;
+
+        if (days > countDaysInMonth(daysInMonth, daysInPrevMonth, months) || days <= 0)
+        {
+            throw WrongDayException{ days };
+        }
+    };
+
 
     int GetYear() const {};
     int GetMonth() const {};
     int GetDay() const {};
-
-    Date(int d) : Date(0, 0, d) {};
 
 
     void AddDays(int d)
