@@ -1,0 +1,10 @@
+
+*.vsidx
+*.db
+.vs/ClassDate/v17/.wsuo
+*.db-wal
+.vs/ClassDate/v17/Browse.VC.db-shm
+*.ipch
+*.opendb
+*.json
+*.sqlite
