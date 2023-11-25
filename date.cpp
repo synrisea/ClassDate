@@ -260,5 +260,39 @@ public:
 
 int main()
 {
+    try
+    {
+        Date date(43, 2, -20025);
+    }
+    catch (const WrongDayException& d)
+    {
+        std::cerr << "Wrong day." << std::endl;
+        return 1;
+    }
 
+    catch (const WrongMonthException& m)
+    {
+        std::cerr << "Wrong month." << std::endl;
+        return 1;
+    }
+
+    catch (const WrongYearException& y)
+    {
+        std::cerr << "Wrong year." << std::endl;
+        return 1;
+    }
+
+    catch (const std::istream::failure& ex)
+    {
+        std::cerr << "Data could not be read." << ex.what() << "\n";
+        return 2;
+    }
+
+    catch (...)
+    {
+        std::cerr << "Other failure." << "\n";
+        return -1;
+    }
+
+    return 0;
 }
